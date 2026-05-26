@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+
+# Editors / IDEs
+.idea/
+.vscode/
+*.swp
+
+# Claude Code runtime state — only relevant if this repo is ever
+# symlinked into ~/.claude, but harmless to list pre-emptively.
+cache/
+paste-cache/
+sessions/
+projects/
+tasks/
+plans/
+backups/
+file-history/
+shell-snapshots/
+session-env/
+telemetry/
+ide/
+history.jsonl
+stats-cache.json
+mcp-needs-auth-cache.json
+
+# Plugin marketplace payloads (downloaded, large, regenerated on demand)
+plugins/marketplaces/
+
+# Local-only settings overlays
+settings.local.json
+.claude.local.json
