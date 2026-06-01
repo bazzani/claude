@@ -14,3 +14,9 @@ Follow the alphagov commit message style (https://github.com/alphagov/styleguide
 - Explain *why* the change is being made, not just what changed — the diff already shows the what.
 - Bullet points are fine (hyphens or asterisks, single-space indent).
 - Do not rely on issue tracker links as a substitute for a meaningful message.
+
+## pushing commits
+never push a commit, or merge a branch without asking me first
+
+## branch tracking
+Never set up upstream tracking when checking out a new branch — in particular, never track `origin/development`. When branching off a remote ref, always use `--no-track` (e.g. `git checkout -b <name> --no-track origin/development`). If a branch ends up tracking something, fix it with `git branch --unset-upstream`.
