@@ -30,6 +30,15 @@ never push a commit, or merge a branch without asking me first
 
 ## branch tracking
 
-Never set up upstream tracking when checking out a new branch — in particular, never track `origin/development`. When
-branching off a remote ref, always use `--no-track` (e.g. `git checkout -b <name> --no-track origin/development`). If a
-branch ends up tracking something, fix it with `git branch --unset-upstream`.
+The rule is: a new branch must **never** track its source branch (especially `origin/development`), but **should**
+track its own same-name remote once pushed. So the workflow is two-step:
+
+1. **At checkout**, always use `--no-track` so the new local branch does not inherit upstream from its source
+   (e.g. `git checkout -b <name> --no-track origin/development`). If a branch ends up tracking the source ref,
+   fix it with `git branch --unset-upstream`.
+2. **At first push**, set the upstream to the same-name remote with `-u`
+   (e.g. `git push -u origin <name>`). This creates `origin/<name>` and configures the local branch to track it,
+   not `origin/development`. Subsequent `git push` / `git pull` then Just Work without arguments.
+
+Before pushing with `-u`, double-check the configured upstream is `origin/<same-name>` and not
+`origin/development` — `git rev-parse --abbrev-ref --symbolic-full-name @{u}` confirms.
